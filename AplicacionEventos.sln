@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29519.181
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AplicacionEventos", "AplicacionEventos\AplicacionEventos.csproj", "{D4BF899C-5750-4EF3-B58D-8A53C9F9AAAC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppEvents", "AplicacionEventos\AppEvents.csproj", "{D4BF899C-5750-4EF3-B58D-8A53C9F9AAAC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventService", "EventService\EventService.csproj", "{5B87D154-930F-433C-B829-D0CE98F2F380}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventRepository", "EventRepository\EventRepository.csproj", "{EA187BE1-4433-43D2-B703-E500C14C6019}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventDomain", "EventRepository\EventDomain.csproj", "{EA187BE1-4433-43D2-B703-E500C14C6019}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventValidator", "EventValidator\EventValidator.csproj", "{A15EB01F-C96F-4CFA-A1AF-55E111CF6C94}"
 EndProject

@@ -1,7 +1,8 @@
-﻿using System.IO;
+﻿using EventValidator.Interfaces;
+using System.IO;
 namespace EventValidator
 {
-    public class ValidateFile
+    public class ValidateFile: IValidateFile
     {
         public bool ValidarExistenciaArchivo(string _cRuta)
         {

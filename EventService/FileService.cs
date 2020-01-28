@@ -1,14 +1,20 @@
 ﻿using EventRepository;
 using EventService.Interfaces;
+using EventValidator.Interfaces;
 using System;
 using System.Collections.Generic;
-using System.Globalization;
 using System.IO;
 
 namespace EventService
 {
     public class FileService: IFileService
     {
+        private IValidateDate _validateDate;
+        public FileService(IValidateDate validateDate)
+        {
+            _validateDate = validateDate ?? throw new ArgumentNullException(nameof(validateDate));
+        }
+
         public List<Event> GetEvents(string _cRuta)
         {
             Array arrEvents = File.ReadAllLines(_cRuta);
@@ -27,21 +33,13 @@ namespace EventService
                 Event newEvent = new Event();
                 newEvent.cNombre = arrValues[0];
                 newEvent.cMensaje = string.Empty;
-                newEvent.dtFecha = SetValueFecha(arrValues[1]);
+                newEvent.dtFecha = _validateDate.SetValueFecha(arrValues[1]);
                 newEvent.cTipo = GetTipoFecha(newEvent.dtFecha);
                 newEvent.iDiferencia = GetDiferencia(newEvent.cTipo, newEvent.dtFecha);
                 listEvents.Add(newEvent);
             }
 
             return listEvents;
-        }
-
-        private DateTime SetValueFecha(string dtFecha)
-        {
-            string cFormatoFecha = "dd/MM/yyyy HH:mm";
-            DateTime dtReturnFecha = DateTime.ParseExact(dtFecha, cFormatoFecha, CultureInfo.InvariantCulture);
-
-            return dtReturnFecha;
         }
 
         private string GetTipoFecha(DateTime dtFecha)

@@ -50,13 +50,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EventRepository\EventRepository.csproj">
+    <ProjectReference Include="..\EventRepository\EventDomain.csproj">
       <Project>{ea187be1-4433-43d2-b703-e500c14c6019}</Project>
-      <Name>EventRepository</Name>
+      <Name>EventDomain</Name>
     </ProjectReference>
     <ProjectReference Include="..\EventService\EventService.csproj">
       <Project>{5b87d154-930f-433c-b829-d0ce98f2f380}</Project>
       <Name>EventService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EventValidator\EventValidator.csproj">
+      <Project>{A15EB01F-C96F-4CFA-A1AF-55E111CF6C94}</Project>
+      <Name>EventValidator</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

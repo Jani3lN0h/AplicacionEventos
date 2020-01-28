@@ -45,19 +45,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DisplayInfoService.cs" />
     <Compile Include="EventService.cs" />
     <Compile Include="FileService.cs" />
+    <Compile Include="Interfaces\IDisplayInfoService.cs" />
     <Compile Include="Interfaces\IEventService.cs" />
     <Compile Include="Interfaces\IFileService.cs" />
+    <Compile Include="Interfaces\IObtainFileService.cs" />
+    <Compile Include="ObtainFileService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\EventRepository\EventRepository.csproj">
+    <ProjectReference Include="..\EventRepository\EventDomain.csproj">
       <Project>{EA187BE1-4433-43D2-B703-E500C14C6019}</Project>
-      <Name>EventRepository</Name>
+      <Name>EventDomain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\EventValidator\EventValidator.csproj">
+      <Project>{A15EB01F-C96F-4CFA-A1AF-55E111CF6C94}</Project>
+      <Name>EventValidator</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
