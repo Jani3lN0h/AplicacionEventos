@@ -1,12 +1,20 @@
 ﻿using EventValidator.Interfaces;
+using System;
 using System.IO;
 namespace EventValidator
 {
     public class ValidateFile: IValidateFile
     {
-        public bool ValidarExistenciaArchivo(string _cRuta)
+        public Func<string, bool> ValidaArchivo { get; set; }
+
+        public ValidateFile()
         {
-            bool lExisteArchivo = File.Exists(_cRuta);
+            ValidaArchivo = (ruta) => File.Exists(ruta);
+        }
+
+        public bool ValidarExistenciaArchivo(string cRuta)
+        {
+            bool lExisteArchivo = ValidaArchivo(cRuta);
 
             return lExisteArchivo;
         }

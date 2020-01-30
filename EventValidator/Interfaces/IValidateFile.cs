@@ -2,6 +2,6 @@
 {
     public interface IValidateFile
     {
-        bool ValidarExistenciaArchivo(string _cRuta);
+        bool ValidarExistenciaArchivo(string cRuta);
     }
 }

@@ -1,4 +1,6 @@
 ﻿using EventService;
+using EventService.Factory;
+using EventService.Factory.Interfaces;
 using EventService.Interfaces;
 using EventValidator;
 using EventValidator.Interfaces;
@@ -9,8 +11,10 @@ namespace AplicacionEventos
     {
         static void Main(string[] args)
         {
+            IDetermineType determineType = new DetermineType();
             IValidateDate validateDate = new ValidateDate();
-            IEventService eventService = new EventsService();
+            IDetermineTypeFactory determineTypeFactory = new DetermineTypeFactory();
+            IEventService eventService = new EventsService(determineType,validateDate, determineTypeFactory);
             IFileService fileService = new FileService(validateDate);
             IObtainFileService obtainFileService = new ObtainFileService();
             IValidateFile validateFile = new ValidateFile();

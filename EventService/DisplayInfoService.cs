@@ -3,7 +3,7 @@ using System;
 
 namespace EventService
 {
-    public class DisplayInfoService:IDisplayInfoService
+    public class DisplayInfoService : IDisplayInfoService
     {
         public void ListDisplayInfo(string[] arrDisplay)
         {

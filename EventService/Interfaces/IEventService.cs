@@ -5,6 +5,6 @@ namespace EventService.Interfaces
 {
     public interface IEventService
     {
-        List<Event> GetInfoEvents(List<Event> listEvents);
+        List<EventDisplay> SetInfoEventsDisplay(List<Event> listEvents);
     }
 }

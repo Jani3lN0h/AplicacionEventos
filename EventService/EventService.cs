@@ -1,21 +1,44 @@
 ﻿using EventRepository;
+using EventService.Factory.Interfaces;
 using EventService.Interfaces;
+using EventValidator.Interfaces;
+using System;
 using System.Collections.Generic;
 
 namespace EventService
 {
     public class EventsService : IEventService
     {
-        public List<Event> GetInfoEvents(List<Event> listEvents)
+        private readonly IDetermineType _determineType;
+        private readonly IValidateDate _validateDate;
+        private readonly IDetermineTypeFactory _determineTypeFactory;
+
+        public EventsService(IDetermineType determineType, IValidateDate validateDate, IDetermineTypeFactory determineTypeFactory)
         {
-            string cPasado = "ocurrió hace";
-            string cFuturo = "ocurrirá dentro de";
+            _determineType = determineType ?? throw new ArgumentNullException(nameof(determineType));
+            _validateDate = validateDate ?? throw new ArgumentNullException(nameof(validateDate));
+            _determineTypeFactory = determineTypeFactory ?? throw new ArgumentNullException(nameof(determineTypeFactory));
+        }
+
+        public List<EventDisplay> SetInfoEventsDisplay(List<Event> listEvents)
+        {
+
+            List<EventDisplay> listDisplay = new List<EventDisplay>();
+
             foreach (Event item in listEvents)
             {
-                item.cMensaje = string.Format("{0} {1}: {2} {3}", item.cNombre, (item.iDiferencia < 0 ? cPasado : cFuturo), item.iDiferencia, item.cTipo);
-            }
+                EventDisplay newEvent = new EventDisplay();
+                newEvent.cNombre = item.cNombre;
+                newEvent.dtFecha = item.dtFecha;
+                newEvent.Tipo = _determineType.CalculateType(item.dtFecha);
+                newEvent.lPasado = _validateDate.DeterminePastEvent(item.dtFecha);
+                newEvent.iDiferencia = _validateDate.SetMinutes(item.dtFecha);
+                ITypeCalculator typeCalculator = _determineTypeFactory.ObtenerInstancia(newEvent.Tipo);
+                newEvent.cMensaje = typeCalculator.CreateDisplayMessage(newEvent);
 
-            return listEvents;
+                listDisplay.Add(newEvent);
+            }
+            return listDisplay;
         }
     }
 }

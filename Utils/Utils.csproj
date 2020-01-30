@@ -4,16 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{5B87D154-930F-433C-B829-D0CE98F2F380}</ProjectGuid>
+    <ProjectGuid>{A3E34654-6A85-4372-B502-069FD24B85B6}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>EventService</RootNamespace>
-    <AssemblyName>EventService</AssemblyName>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Utils</RootNamespace>
+    <AssemblyName>Utils</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -23,16 +23,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -46,40 +42,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DayCalculator.cs" />
-    <Compile Include="DetermineType.cs" />
-    <Compile Include="DisplayInfoService.cs" />
-    <Compile Include="EventService.cs" />
-    <Compile Include="Factory\DetermineTypeFactory.cs" />
-    <Compile Include="Factory\Interfaces\IDetermineTypeFactory.cs" />
-    <Compile Include="FileService.cs" />
-    <Compile Include="HourCalculator.cs" />
-    <Compile Include="Interfaces\IDetermineType.cs" />
-    <Compile Include="Interfaces\ITypeCalculator.cs" />
-    <Compile Include="Interfaces\IDisplayInfoService.cs" />
-    <Compile Include="Interfaces\IEventService.cs" />
-    <Compile Include="Interfaces\IFileService.cs" />
-    <Compile Include="Interfaces\IObtainFileService.cs" />
-    <Compile Include="MinuteCalculator.cs" />
-    <Compile Include="MonthCalculator.cs" />
-    <Compile Include="ObtainFileService.cs" />
+    <Compile Include="Interfaces\IUtil.cs" />
+    <Compile Include="Util.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\EventRepository\EventDomain.csproj">
       <Project>{EA187BE1-4433-43D2-B703-E500C14C6019}</Project>
       <Name>EventDomain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\EventValidator\EventValidator.csproj">
-      <Project>{A15EB01F-C96F-4CFA-A1AF-55E111CF6C94}</Project>
-      <Name>EventValidator</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Utils\Utils.csproj">
-      <Project>{A3E34654-6A85-4372-B502-069FD24B85B6}</Project>
-      <Name>Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

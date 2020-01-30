@@ -9,7 +9,7 @@ namespace AplicacionEventos
 {
     public class EventManagement
     {
-        private string cRuta; //= "C:\\Users\\janiel.noh\\Desktop\\sample.txt";
+        //"C:\\Users\\janiel.noh\\Desktop\\sample.txt";
         private readonly IEventService _eventService;
         private readonly IFileService _fileService;
         private readonly IObtainFileService _obtainFileService;
@@ -27,15 +27,16 @@ namespace AplicacionEventos
 
         public void Init()
         {
-            cRuta = _obtainFileService.ObtainRouteFile();
+            string cRuta = _obtainFileService.ObtainRouteFile();
             if (!_validateFile.ValidarExistenciaArchivo(cRuta))
             {
                 _displayInfoService.DisplayMessage("El archivo no existe en la ruta especificada");
                 Init();
             }
             List<Event> listEvents = _fileService.GetEvents(cRuta);
-            listEvents = _eventService.GetInfoEvents(listEvents);
-            _displayInfoService.ListDisplayInfo(listEvents.Select(x => x.cMensaje).ToArray());
+            List<EventDisplay> listEventsDisplay = _eventService.SetInfoEventsDisplay(listEvents);
+            _displayInfoService.ListDisplayInfo(listEventsDisplay.Select(x => x.cMensaje).ToArray());
+            Environment.Exit(0);
         }
     }
 }
